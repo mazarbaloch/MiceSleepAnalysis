@@ -8,8 +8,8 @@ from tensorflow.keras.utils import to_categorical
 import wandb
 
 # Configure WandB with your API key
-wandb.login(key='b15079c6017deb461bf6e17500c26d80168688f3')
-wandb.init(project="SleepAnalysis", entity="research-uef")
+wandb.login(key='')
+wandb.init(project="", entity="research-uef")
 
 #model = keras.models.load_model('trained_model.h5')
 data = np.load('experiment1.npz', allow_pickle=True)
@@ -27,8 +27,6 @@ X = np.concatenate((bandsD, d), axis=1)
 # The target is the sleep stage ID from 'epochsLinked'
 y = to_categorical(epochsLinked[:, 2] - 1, num_classes=3)
 
-# The architecture of your model is commented out because you are loading a pre-trained model.
-# If you want to use this architecture, uncomment the lines below and comment the 'load_model' line above.
 model = Sequential()
 model.add(Conv1D(64, 3, activation='relu', input_shape=(X.shape[1], 1)))
 model.add(MaxPooling1D(2))
